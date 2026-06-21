@@ -1,0 +1,28 @@
+{
+  "name": "chatgpt",
+  "version": "0.1.0+codex.20260615042301",
+  "description": "Open ChatGPT in the Codex in-app browser and support delegated consultations only after Codex has gathered enough bounded context for useful second-opinion reasoning.",
+  "author": {
+    "name": "Jonathan"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "ChatGPT",
+    "shortDescription": "Open or consult ChatGPT from Codex.",
+    "longDescription": "A local plugin that gives Codex an @chatgpt workflow: open chatgpt.com in the Codex Browser, or when the user clearly asks to involve ChatGPT, first gather enough repo, app, runtime, or conversation evidence, then send a rich bounded context packet, wait for long-running Pro or extended reasoning responses to finish, read the final answer, and bring the useful guidance back while Codex handles tool-based verification and implementation.",
+    "developerName": "Jonathan",
+    "category": "Productivity",
+    "capabilities": [
+      "Browser",
+      "Navigation",
+      "Delegated consultation",
+      "Long-running response waits"
+    ],
+    "defaultPrompt": [
+      "@chatgpt abre ChatGPT",
+      "@chatgpt investiga el contexto y consultalo con ChatGPT",
+      "@chatgpt pasale el contexto completo y espera que termine"
+    ],
+    "brandColor": "#10A37F"
+  }
+}
