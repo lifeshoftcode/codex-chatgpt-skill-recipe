@@ -27,7 +27,7 @@ Two modes are supported:
 Treat any of these as clear authorization to send a bounded prompt to ChatGPT for the current topic:
 
 - The user invokes `@chatgpt` and asks a question that depends on ChatGPT's advice.
-- The user says phrases like `hablalo con ChatGPT`, `consultalo con ChatGPT`, `preguntale a ChatGPT`, `segun ChatGPT`, `validalo con ChatGPT`, or `usa ChatGPT para esto`.
+- The user says phrases like `talk it through with ChatGPT`, `consult ChatGPT`, `ask ChatGPT`, `according to ChatGPT`, `validate it with ChatGPT`, or `use ChatGPT for this`.
 - The user asks Codex to have ChatGPT reason from the current conversation context.
 
 ### Context Sufficiency Gate
@@ -85,7 +85,7 @@ Do not send secrets, credentials, tokens, private family/student data, payment d
 When reading a ChatGPT response:
 
 1. Poll the visible conversation until generation is complete.
-2. Treat these as incomplete signals: `Pensando`, `Thinking`, `Finalizando respuesta`, `Generating`, `Stop`, `Detener`, no visible composer textbox, no available send button, or answer text still changing.
+2. Treat these as incomplete signals: `Thinking`, `Generating`, `Finalizing response`, `Stop`, localized equivalents of those labels, no visible composer textbox, no available send button, or answer text still changing.
 3. Prefer waiting until the composer textbox is visible again and the main answer text has stayed stable across at least two checks separated by a short delay.
 4. For Pro/deep-reasoning responses, wait up to 10 minutes by default unless the user asked for a faster attempt or interrupts.
 5. If the response is still running after the wait budget, report that it has not finished yet and ask whether to keep waiting or proceed from available evidence. Do not summarize a partial response as final.
@@ -96,25 +96,25 @@ While waiting, send short progress updates to the user occasionally. Do not aban
 Use this default framing unless the user gives a better one:
 
 ```text
-Vas a hablar con Codex sobre una app o una tarea en curso. Codex te pasara contexto suficiente del usuario, de la conversacion, del repo y de las herramientas que haya usado, sin incluir secretos ni datos privados innecesarios.
+You are going to talk with Codex about an app or task in progress. Codex will give you enough context from the user, the conversation, the repo, and the tools it has used, without including secrets or unnecessary private data.
 
-Tu trabajo es responderle a Codex con analisis profundo, preguntas, riesgos y recomendaciones practicas. Puedes tomarte tiempo para razonar. No asumas informacion que Codex no te haya dado. Si falta contexto, pide lo minimo necesario.
+Your job is to respond to Codex with deep analysis, questions, risks, and practical recommendations. Take time to reason. Do not assume information Codex has not provided. If context is missing, ask for only the minimum needed.
 
-No pidas credenciales, datos privados, llaves API, informacion de pago, datos de familias/estudiantes ni secretos. Si algo necesita verificacion en el repo, en la app, en internet o con comandos, pide a Codex que lo revise antes de concluir.
+Do not ask for credentials, private data, API keys, payment information, family/student data, or secrets. If something requires verification in the repo, app, internet, or command output, ask Codex to check it before concluding.
 
-Responde claro, completo y accionable para que Codex pueda traerle la respuesta al usuario, verificarla con herramientas o implementar cambios.
+Respond clearly, completely, and actionably so Codex can bring the answer back to the user, verify it with tools, or implement changes.
 ```
 
 ## Useful Phrases
 
-- `@chatgpt abre ChatGPT`
-- `@chatgpt abre chatgpt.com`
-- `@chatgpt quiero hablar con ChatGPT`
-- `@chatgpt hablalo con ChatGPT segun este contexto`
-- `@chatgpt consultalo con ChatGPT y dime que recomienda`
-- `@chatgpt preguntale a ChatGPT que riesgos ve`
-- `@chatgpt pasale el contexto completo y espera que termine`
-- `@chatgpt consultalo en modo Pro y no cierres hasta que responda completo`
+- `@chatgpt open ChatGPT`
+- `@chatgpt open chatgpt.com`
+- `@chatgpt I want to talk with ChatGPT`
+- `@chatgpt talk it through with ChatGPT using this context`
+- `@chatgpt consult ChatGPT and tell me what it recommends`
+- `@chatgpt ask ChatGPT what risks it sees`
+- `@chatgpt send the full context and wait until it finishes`
+- `@chatgpt consult it in Pro mode and do not stop until the full answer is ready`
 
 ## Follow-Up Scope
 

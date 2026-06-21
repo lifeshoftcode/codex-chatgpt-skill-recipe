@@ -63,9 +63,9 @@ Copy `templates/plugin.json` to `.codex-plugin/plugin.json`, and copy `skills/ch
 ## Example Prompts
 
 ```text
-@chatgpt abre ChatGPT
-@chatgpt consultalo con ChatGPT y dime que recomienda
-@chatgpt pasale el contexto completo y espera que termine
+@chatgpt open ChatGPT
+@chatgpt consult ChatGPT and tell me what it recommends
+@chatgpt send the full context and wait until it finishes
 ```
 
 ## Why This Exists

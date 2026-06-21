@@ -19,9 +19,9 @@
       "Long-running response waits"
     ],
     "defaultPrompt": [
-      "@chatgpt abre ChatGPT",
-      "@chatgpt investiga el contexto y consultalo con ChatGPT",
-      "@chatgpt pasale el contexto completo y espera que termine"
+      "@chatgpt open ChatGPT",
+      "@chatgpt gather context and consult ChatGPT",
+      "@chatgpt send the full context and wait until it finishes"
     ],
     "brandColor": "#10A37F"
   }
