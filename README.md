@@ -37,6 +37,7 @@ chatgpt/
 
 Keep the behavior simple and browser-based:
 - open https://chatgpt.com/ in the Codex in-app browser
+- assume the user signs in to ChatGPT in the Codex in-app Browser when authentication is required
 - only send prompts to ChatGPT when the user explicitly invokes @chatgpt or asks Codex to consult ChatGPT
 - start a new ChatGPT conversation for each delegated consultation unless continuity is explicitly requested
 - gather enough bounded context before consulting ChatGPT

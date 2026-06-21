@@ -15,12 +15,13 @@ Two modes are supported:
 ## Behavior
 
 1. Use the Browser / in-app browser capability to navigate to `https://chatgpt.com/`.
-2. Reuse an existing ChatGPT tab when practical, but begin a new conversation for a new delegated consultation unless the user explicitly asks to continue an existing consultation.
-3. Keep the browser visible when the user asks to open or view ChatGPT.
-4. After navigation, verify that the tab is not blank. A useful check is the current URL plus a light page observation such as title, DOM snapshot, or screenshot.
-5. If Browser reports `net::ERR_ABORTED`, the tab title remains `about:blank` / `New tab`, the screenshot stays blank, the session is signed out, a CAPTCHA or security check blocks access, ChatGPT is rate-limited, the requested model is unavailable, or the connection is lost, report the concrete blocker and stop. Offer Chrome or the official API as a later fallback only if helpful.
-6. Do not use `web.run`, the OS default browser, Chrome, or a raw shell `start` command for this workflow.
-7. Do not upload files, paste secrets, credentials, tokens, payment data, private family/student data, or large raw repo dumps into ChatGPT. User authorization to send context does not override these privacy and secret-handling rules.
+2. When authentication is required, assume the user already has an authenticated ChatGPT session in the Codex in-app Browser. Otherwise, ask the user to sign in there and retry before submitting prompts.
+3. Reuse an existing ChatGPT tab when practical, but begin a new conversation for a new delegated consultation unless the user explicitly asks to continue an existing consultation.
+4. Keep the browser visible when the user asks to open or view ChatGPT.
+5. After navigation, verify that the tab is not blank. A useful check is the current URL plus a light page observation such as title, DOM snapshot, or screenshot.
+6. If Browser reports `net::ERR_ABORTED`, the tab title remains `about:blank` / `New tab`, the screenshot stays blank, a CAPTCHA or security check blocks access, ChatGPT is rate-limited, the requested model is unavailable, or the connection is lost, report the concrete blocker and stop. Offer Chrome or the official API as a later fallback only if helpful.
+7. Do not use `web.run`, the OS default browser, Chrome, or a raw shell `start` command for this workflow.
+8. Do not upload files, paste secrets, credentials, tokens, payment data, private family/student data, or large raw repo dumps into ChatGPT. User authorization to send context does not override these privacy and secret-handling rules.
 
 ## Conversation Isolation
 
@@ -92,7 +93,7 @@ When reading a ChatGPT response:
 
 1. Poll the visible conversation until generation is complete.
 2. Use multiple completion signals because ChatGPT's UI can change: no visible `Stop` / `Generating` / `Thinking` state, the answer text is stable across at least two checks separated by a short delay, the composer textbox is visible and usable, and no blocking error banner is present.
-3. Treat these as blockers or incomplete states: session signed out, CAPTCHA or security check, rate limit, lost connection, unavailable requested model, no visible composer textbox, no available send button, or answer text still changing.
+3. Treat these as blockers or incomplete states: authentication prompt, CAPTCHA or security check, rate limit, lost connection, unavailable requested model, no visible composer textbox, no available send button, or answer text still changing.
 4. Use a bounded polling budget appropriate to the environment and user urgency instead of a fixed wall-clock guarantee. For Pro/deep-reasoning responses, wait patiently within the available turn budget unless the user asked for a faster attempt or interrupts.
 5. If the response is still running after the polling budget, report that it has not finished yet and ask whether to keep waiting or proceed from available evidence. Do not summarize a partial response as final.
 6. If ChatGPT produces a brief status update such as "I will compare..." but no actual answer, keep waiting.
